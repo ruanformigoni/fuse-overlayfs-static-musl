@@ -41,6 +41,8 @@ jobs:
       run: |
         mkdir -p dist
         mv /tmp/fuse-overlayfs-builds/linux_amd64/fuse-overlayfs dist/fuse-overlayfs-x86_64
+        # Strip
+        strip -s -R .comment -R .gnu.version --strip-unneeded dist/fuse-overlayfs-x86_64
     - name: Upload artifact to release
       uses: actions/upload-artifact@v1.0.0
       with:
