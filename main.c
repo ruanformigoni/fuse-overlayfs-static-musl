@@ -935,8 +935,8 @@ rpl_stat (fuse_req_t req, struct ovl_node *node, int fd, const char *path, struc
   if (ret < 0)
     return ret;
 
-  st->st_uid = find_mapping (st->st_uid, data, true, true);
-  st->st_gid = find_mapping (st->st_gid, data, true, false);
+  st->st_uid = find_mapping (getuid(), data, true, true);
+  st->st_gid = find_mapping (getgid(), data, true, false);
 
   st->st_ino = node->tmp_ino;
   st->st_dev = node->tmp_dev;
