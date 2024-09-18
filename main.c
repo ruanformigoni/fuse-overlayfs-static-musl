@@ -3195,7 +3195,7 @@ copyup (struct ovl_data *lo, struct ovl_node *node)
 
   ret = copy_xattr (sfd, dfd, buf, buf_size);
   if (ret < 0)
-    goto exit;
+    perror("Failed to set xattr");
 
   ret = set_fd_origin (dfd, node->path);
   if (ret < 0)
